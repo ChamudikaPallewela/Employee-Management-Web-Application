@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Employee Management</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container">
+            @Html.ActionLink("Employee Management", "Index", "Home", new { area = "" }, new { @class = "navbar-brand text-primary font-weight-bold" })
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link text-dark" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Employees", "Index", "Employees", new { area = "" }, new { @class = "nav-link text-dark" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Working Days", "CalculateWorkingDays", "Employees", new { area = "" }, new { @class = "nav-link text-dark" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Public Holidays", "Index", "PublicHolidays", new { area = "" }, new { @class = "nav-link text-dark" })
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container" style="margin-top: 100px;">
+        @RenderBody()
+        <hr />
+        <footer class="text-center py-4">
+            <p class="text-muted"> &copy; @DateTime.Now.Year - Employee Management System</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <!-- Custom Styles -->
+    <style>
+        /* Navbar Styling */
+        .navbar {
+            padding: 1rem 2rem;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: #495057;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+            .navbar-nav .nav-link:hover,
+            .navbar-nav .nav-link:focus {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+        .navbar-toggler-icon {
+            background-color: #007bff;
+        }
+
+        /* Footer styling */
+        footer {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+
+            footer p {
+                margin-bottom: 0;
+            }
+
+        /* Content Container */
+        .container {
+            max-width: 100%;
+            padding: 30px;
+        }
+
+        /* Make the page's content cleaner and minimalist */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+        }
+
+        h1, h2 {
+            font-weight: 600;
+            color: #343a40;
+        }
+
+        /* Add spacing around content */
+        .container {
+            padding-top: 10px;
+        }
+    </style>
+</body>
+</html>

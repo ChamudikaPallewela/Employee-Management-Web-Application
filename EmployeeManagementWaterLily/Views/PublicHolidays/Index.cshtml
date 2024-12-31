@@ -1,0 +1,100 @@
+﻿@model IEnumerable<EmployeeManagementWaterLily.PublicHoliday>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title</title>
+
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        .header-image {
+            position: relative;
+            background-image: url('https://adaderanaenglish.s3.amazonaws.com/1584386073-holiday.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Image with Title Overlay -->
+    <div class="header-image">
+        <h2 class="header-title">Public Holidays</h2>
+    </div>
+
+    <div class="container my-5">
+        <div class="row justify-content-between">
+            <div class="col-md-6">
+                <p>
+                    @Html.ActionLink("Create New Holiday", "Create", null, new { @class = "btn btn-success" })
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.HolidayDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.HolidayName)
+                                    </th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.HolidayDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.HolidayName)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.HolidayId }, new { @class = "btn btn-warning btn-sm" }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.HolidayId }, new { @class = "btn btn-info btn-sm" }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.HolidayId }, new { @class = "btn btn-danger btn-sm" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery (Optional if already included elsewhere) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

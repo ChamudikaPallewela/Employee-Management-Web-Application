@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<main class="container">
+
+    <!-- Header Section with background image and overlay title -->
+    <section class="header-image">
+        <div class="header-title">
+            <h1>Welcome to Employee Management</h1>
+            <p class="lead">Manage Employees, Public Holidays, and Calculate Working Days effortlessly with our easy-to-use web interface.</p>
+        </div>
+    </section>
+
+
+
+    <!-- Features Section -->
+    <section class="row mt-5 text-center">
+        <div class="col-md-4 mb-4">
+            <h2>Manage Employees</h2>
+            <p>View, create, edit, and delete employee records with ease. Keep your team organized.</p>
+            <a class="btn btn-outline-primary" href="@Url.Action("Index", "Employees")">Go to Employee List &raquo;</a>
+        </div>
+        <div class="col-md-4 mb-4">
+            <h2>Calculate Working Days</h2>
+            <p>Calculate the number of working days between two dates while excluding weekends and public holidays.</p>
+            <a class="btn btn-outline-primary" href="@Url.Action("CalculateWorkingDays", "Employees")">Start Calculation &raquo;</a>
+        </div>
+        <div class="col-md-4 mb-4">
+            <h2>View Public Holidays</h2>
+            <p>Get a list of all public holidays for the year. Easily plan your work schedules and avoid overlaps.</p>
+            <a class="btn btn-outline-primary" href="@Url.Action("Index", "PublicHolidays")">View Holidays &raquo;</a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="text-center mt-5">
+        <p>Powered by <a href="https://asp.net" target="_blank">ASP.NET</a>. Designed to streamline employee and holiday management.</p>
+    </footer>
+</main>
+
+<!-- Custom styles -->
+<style>
+    /* Custom styles to overlay title on the image */
+    .header-image {
+        position: relative;
+        background-image: url('https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/6xbdErHJCzRjpVjEVaQu2a/3ed24ed0fa4ef68024833b6bdce44e60/GettyImages-1355656354__1_.jpg?w=1500&h=680&q=60&fit=fill&f=faces&fm=jpg&fl=progressive&auto=format%2Ccompress&dpr=1&w=1000');
+        background-size: cover;
+        background-position: center;
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        margin-bottom: 30px;
+    }
+
+    .header-title {
+        position: absolute;
+        font-size: 2.5rem;
+        font-weight: bold;
+        background: rgba(0, 0, 0, 0);
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    body {
+        background-color: #f8f9fa;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    .lead {
+        font-size: 1.25rem;
+        color: #6c757d;
+    }
+
+    .nav-link {
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+
+    .btn-lg {
+        padding: 15px 30px;
+        font-size: 1.2rem;
+    }
+
+    .btn-outline-primary {
+        font-size: 1.1rem;
+        padding: 12px 25px;
+        border-width: 2px;
+    }
+
+    footer p {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+</style>

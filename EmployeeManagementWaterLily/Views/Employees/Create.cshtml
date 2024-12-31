@@ -1,0 +1,86 @@
+﻿@model EmployeeManagementWaterLily.Employee
+
+@{
+    ViewBag.Title = "Create Employee";
+}
+
+<style>
+    /* Custom styles to overlay title on the image */
+    .header-image {
+        position: relative;
+        background-image: url('https://cdn.prod.website-files.com/6448f477eb4d56253a7e0d51/6500ccba7b23fc64f0274fbf_teammates.jpeg');
+        background-size: cover;
+        background-position: center;
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+
+    .header-title {
+        position: absolute;
+        font-size: 2.5rem;
+        font-weight: bold;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+    }
+</style>
+
+<div class="header-image">
+    <div class="header-title">Create Employee</div>
+</div>
+
+<div class="container mt-5">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="card p-4 shadow-sm">
+            <h4 class="card-title">Employee Information</h4>
+            <hr />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-sm-3 col-form-label fw-bold" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-sm-3 col-form-label fw-bold" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.JobPosition, htmlAttributes: new { @class = "col-sm-3 col-form-label fw-bold" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.JobPosition, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.JobPosition, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+           
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary px-5">Create</button>
+                <a href="@Url.Action("Index")" class="btn btn-secondary px-4">Back to List</a>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+
+    
+}

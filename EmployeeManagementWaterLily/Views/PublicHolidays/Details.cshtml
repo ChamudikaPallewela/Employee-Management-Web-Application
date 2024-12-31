@@ -1,0 +1,97 @@
+﻿@model EmployeeManagementWaterLily.PublicHoliday
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title</title>
+
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        .header-image {
+            position: relative;
+            background-image: url('https://adaderanaenglish.s3.amazonaws.com/1584386073-holiday.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .details-container {
+            margin-top: 30px;
+        }
+
+        .details-card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-link {
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Image with Title Overlay -->
+    <div class="header-image">
+        <h2 class="header-title">Public Holiday Details</h2>
+    </div>
+
+    <div class="container my-5 details-container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card details-card">
+                    <div class="card-body">
+                        <h4>PublicHoliday</h4>
+                        <hr />
+                        <dl class="row">
+                            <dt class="col-md-3">
+                                @Html.DisplayNameFor(model => model.HolidayDate)
+                            </dt>
+                            <dd class="col-md-9">
+                                @Html.DisplayFor(model => model.HolidayDate)
+                            </dd>
+
+                            <dt class="col-md-3">
+                                @Html.DisplayNameFor(model => model.HolidayName)
+                            </dt>
+                            <dd class="col-md-9">
+                                @Html.DisplayFor(model => model.HolidayName)
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="back-link">
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.HolidayId }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery (Optional if already included elsewhere) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

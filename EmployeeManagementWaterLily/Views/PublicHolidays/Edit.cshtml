@@ -1,0 +1,139 @@
+﻿@model EmployeeManagementWaterLily.PublicHoliday
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title</title>
+
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Include Bootstrap Datepicker CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+
+    <style>
+        .header-image {
+            position: relative;
+            background-image: url('https://adaderanaenglish.s3.amazonaws.com/1584386073-holiday.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .form-container {
+            margin-top: 30px;
+        }
+
+        .form-card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+        }
+
+        .datepicker {
+            z-index: 9999 !important; /* Ensure the datepicker is above other elements */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Image with Title Overlay -->
+    <div class="header-image">
+        <h2 class="header-title">Edit Public Holiday</h2>
+    </div>
+
+    <div class="container my-5 form-container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card form-card">
+                    <div class="card-body">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <h4>PublicHoliday</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.HolidayId)
+
+                            <!-- Holiday Date -->
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.HolidayDate, htmlAttributes: new { @class = "col-md-3 control-label font-weight-bold" })
+                                <div class="col-md-9">
+                                    <!-- Date picker -->
+                                    @Html.EditorFor(model => model.HolidayDate, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                                    @Html.ValidationMessageFor(model => model.HolidayDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <!-- Holiday Name -->
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.HolidayName, htmlAttributes: new { @class = "col-md-3 control-label font-weight-bold" })
+                                <div class="col-md-9">
+                                    @Html.EditorFor(model => model.HolidayName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.HolidayName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="form-group row text-center">
+                                <div class="col-md-12">
+                                    <input type="submit" value="Save" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="text-center mt-3">
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Include Bootstrap Datepicker JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+    <script>
+        // Initialize the datepicker on the input field with class 'datepicker'
+        $('.datepicker').datepicker({
+            format: 'mm/dd/yyyy', // Date format only (no time)
+            autoclose: true,
+            todayHighlight: true
+        });
+    </script>
+</body>
+</html>

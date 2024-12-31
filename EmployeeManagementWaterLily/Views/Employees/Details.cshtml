@@ -1,0 +1,76 @@
+﻿@model EmployeeManagementWaterLily.Employee
+
+@{
+    ViewBag.Title = "Employee Details";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title</title>
+
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        .header-image {
+            position: relative;
+            background-image: url('https://cdn.prod.website-files.com/6448f477eb4d56253a7e0d51/6500ccba7b23fc64f0274fbf_teammates.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Image with Title Overlay -->
+    <div class="header-image">
+        <h2 class="header-title">Employee Details</h2>
+    </div>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h4 class="text-primary mb-3">Employee Information</h4>
+                        <dl class="row">
+                            <dt class="col-sm-4 font-weight-bold">Name</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.Name)</dd>
+
+                            <dt class="col-sm-4 font-weight-bold">Email</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.Email)</dd>
+
+                            <dt class="col-sm-4 font-weight-bold">Job Position</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.JobPosition)</dd>
+                        </dl>
+                    </div>
+                    <div class="card-footer text-center">
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning mr-2" })
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery (Optional if already included elsewhere) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
